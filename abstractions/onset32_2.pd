@@ -27,7 +27,7 @@
 #X obj 213 -8 f 0;
 #X msg 256 -62 0;
 #X obj 260 -10 + 1;
-#X obj 47 71 sprintf symbol \$1-in-%d;
+#X obj 47 71 cyclone/sprintf symbol \$1-in-%d;
 #X obj 190 18 pack 0 0;
 #X msg 141 13 1 1;
 #X obj 103 123 cnv 15 40 15 empty empty \$1 0 8 1 16 -128992 -228856

@@ -1,6 +1,6 @@
-#N canvas 232 390 869 486 10;
+#N canvas 226 416 869 486 10;
 #X declare -path abstractions;
-#N canvas 379 249 552 491 patch 0;
+#N canvas 373 275 552 491 patch 0;
 #X obj 67 146 f \$0;
 #X obj 67 166 list;
 #X obj 67 127 t b a;
@@ -250,7 +250,7 @@
 #X connect 112 0 114 0;
 #X connect 113 0 110 0;
 #X restore 372 223 pd midi-control;
-#N canvas 19 147 1376 729 former-STYLE 0;
+#N canvas 544 176 1376 729 former-STYLE 0;
 #N canvas 491 102 842 688 search 0;
 #X obj 288 195 cyclone/coll \$0-knowledge;
 #C restore;
@@ -2345,7 +2345,7 @@ with the density that comes from the slider;
 #X msg 320 340 label \$1;
 #X msg 320 302 new pattern;
 #X obj 320 321 zexy/list2symbol;
-#X obj 376 242 loadbang;
+#X obj 359 205 loadbang;
 #X msg 821 193 bang;
 #X msg 1205 431 41 1;
 #X obj 1099 431 pdmus/midi-learn;
@@ -2374,7 +2374,8 @@ with the density that comes from the slider;
 #X obj 429 402 s \$0-set-generate-drumz;
 #X msg 441 318 color 13 2 10 \, size 24 \, label_pos 32 12 \, label_font
 1 12;
-#X obj 373 267 t b b;
+#X obj 379 240 t b b;
+#X obj 278 241 delay 100;
 #X connect 0 0 51 0;
 #X connect 0 1 2 0;
 #X connect 0 2 52 0;
@@ -2419,7 +2420,7 @@ with the density that comes from the slider;
 #X connect 53 0 82 0;
 #X connect 54 0 55 0;
 #X connect 55 0 53 0;
-#X connect 56 0 84 0;
+#X connect 56 0 85 0;
 #X connect 57 0 23 0;
 #X connect 58 0 59 1;
 #X connect 59 0 72 0;
@@ -2445,6 +2446,7 @@ with the density that comes from the slider;
 #X connect 83 0 82 0;
 #X connect 84 0 54 0;
 #X connect 84 1 83 0;
+#X connect 85 0 84 0;
 #X restore 370 271 pd former-STYLE -subpatch;
 #N canvas 0 128 709 379 midi-unused 0;
 #X obj 49 64 ctlin 29;
@@ -2903,10 +2905,10 @@ with the density that comes from the slider;
 #X obj 128 389 cnv 15 90 20 empty empty garageHouse 0 12 1 12 -128992
 -228856 0;
 #X obj 97 266 vradio 24 1 1 6 \$0-stylenumber \$0-set-stylenumber empty
-0 -8 0 10 -66577 -258113 -1 2;
+0 -8 0 10 -66577 -258113 -1 3;
 #X obj 86 442 bng 8 250 50 0 \$0-learn-new-pattern --- empty 17 7 0
 10 -258113 -1 -1;
 #X obj 86 402 bng 8 250 50 0 \$0-learn-style --- empty 17 7 0 10 -258113
 -1 -1;
-#X obj 98 427 bng 24 250 50 0 \$0-generate-drumz \$0-set-generate-drumz
-new pattern 32 12 1 12 -258699 -66577 -233017;
+#X obj 98 427 bng 15 250 50 0 \$0-generate-drumz \$0-set-generate-drumz
+new 17 7 0 10 -262144 -1 -1;

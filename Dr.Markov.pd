@@ -1,28 +1,28 @@
-#N canvas 33 23 877 489 10;
+#N canvas 79 117 877 489 10;
 #X declare -path abstractions;
-#N canvas 373 275 552 491 patch 0;
-#X obj 67 146 f \$0;
-#X obj 67 166 list;
-#X obj 67 127 t b a;
-#X obj 67 108 zexy/list2symbol;
-#X msg 68 185 \; \$1-title label \$2;
-#X obj 30 202 f \$0;
-#X msg 30 183 bang;
-#X obj 30 65 loadbang;
-#X msg 40 296 \; \$1-title color 11 13;
-#X obj 454 141 + 1;
-#X obj 424 141 f 0;
-#X msg 439 120 0;
-#X obj 381 64 pdmus/midi-sync;
-#X obj 381 85 sel 0;
-#X obj 424 186 s numberz32;
-#X obj 439 164 sel 31;
-#X text 36 413 daniel.gomez@upf.edu;
-#X msg 56 230 \; \$1-title label_font 3 20;
-#X msg 67 88 MARKOV DRUMS;
-#X msg 30 330 \; \$1-title label_pos 20 18;
-#X msg 48 263 \; \$1-title vis_size 870 480;
-#X text 382 42 angel:;
+#N canvas 367 301 534 395 patch 1;
+#X obj 49 126 f \$0;
+#X obj 49 146 list;
+#X obj 49 107 t b a;
+#X obj 49 88 zexy/list2symbol;
+#X msg 50 165 \; \$1-title label \$2;
+#X obj 12 182 f \$0;
+#X msg 12 163 bang;
+#X obj 12 45 loadbang;
+#X msg 22 276 \; \$1-title color 11 13;
+#X obj 436 121 + 1;
+#X obj 406 121 f 0;
+#X msg 421 100 0;
+#X obj 363 44 pdmus/midi-sync;
+#X obj 363 65 sel 0;
+#X obj 406 166 s numberz32;
+#X obj 421 144 sel 31;
+#X text 8 354 daniel.gomez@upf.edu;
+#X msg 38 210 \; \$1-title label_font 3 20;
+#X msg 49 68 MARKOV DRUMS;
+#X msg 12 310 \; \$1-title label_pos 20 18;
+#X msg 30 243 \; \$1-title vis_size 870 480;
+#X text 364 22 angel:;
 #N canvas 11 146 1221 655 midi-control 0;
 #X obj 49 201 makenote;
 #X msg 49 176 \$1 127 100;
@@ -249,9 +249,9 @@
 #X connect 110 1 109 0;
 #X connect 112 0 114 0;
 #X connect 113 0 110 0;
-#X restore 372 223 pd midi-control;
-#N canvas 1 23 1280 729 former-STYLE 0;
-#N canvas 367 23 842 688 search 0;
+#X restore 354 203 pd midi-control;
+#N canvas 469 137 1280 729 former-STYLE 0;
+#N canvas 367 50 842 688 search 0;
 #X obj 288 195 cyclone/coll \$0-knowledge;
 #C restore;
 #N canvas 297 275 562 451 element2list 0;
@@ -2385,8 +2385,8 @@ with the density that comes from the slider;
 #X obj 939 281 s lock-pattern;
 #X obj 939 171 sel 0 1 2;
 #X obj 939 42 r \$0-generate-drumz;
-#X obj 939 151 f;
 #X obj 959 73 r lock-instrument;
+#X obj 939 151 f 0;
 #X connect 0 0 51 0;
 #X connect 0 1 2 0;
 #X connect 0 2 52 0;
@@ -2465,10 +2465,10 @@ with the density that comes from the slider;
 #X connect 91 0 89 0;
 #X connect 91 1 88 0;
 #X connect 91 2 87 0;
-#X connect 92 0 93 0;
-#X connect 93 0 91 0;
-#X connect 94 0 93 0;
-#X restore 370 271 pd former-STYLE -subpatch;
+#X connect 92 0 94 0;
+#X connect 93 0 94 0;
+#X connect 94 0 91 0;
+#X restore 352 251 pd former-STYLE -subpatch;
 #N canvas 0 128 709 379 midi-unused 0;
 #X obj 49 64 ctlin 29;
 #X obj 55 102 list prepend;
@@ -2542,7 +2542,7 @@ with the density that comes from the slider;
 #X connect 36 0 39 0;
 #X connect 38 0 37 0;
 #X connect 39 0 38 0;
-#X restore 371 244 pd midi-unused;
+#X restore 353 224 pd midi-unused;
 #N canvas 0 128 337 245 sound-engine 0;
 #N canvas 117 142 450 420 samples 0;
 #X obj 118 54 loadbang;
@@ -2838,8 +2838,8 @@ with the density that comes from the slider;
 #X connect 1 0 7 0;
 #X connect 4 0 3 0;
 #X connect 6 0 2 0;
-#X restore 363 306 pd sound-engine (disabled);
-#X obj 26 32 declare -path abstractions;
+#X restore 345 286 pd sound-engine (disabled);
+#X obj 8 12 declare -path abstractions;
 #X connect 0 0 1 0;
 #X connect 1 0 4 0;
 #X connect 2 0 0 0;
@@ -2866,7 +2866,7 @@ with the density that comes from the slider;
 #X obj 1 2 cnv 15 870 480 empty \$0-title MARKOV DRUMS 20 18 0 20 -128992
 -258699 0;
 #X obj 236 274 vsl 24 180 -1 1 0 1 param_comm-ui comm COMMONNESS 0
--35 0 20 -66577 -258113 -228856 17900 1;
+-35 0 20 -66577 -258113 -228856 10800 1;
 #X obj 267 351 bng 24 250 50 0 zero-dws set-zero-dws empty 17 7 0 10
 -66577 -258113 -258113;
 #X obj 581 274 vsl 24 180 -1 1 0 1 param_ag-cp ag-cp-in Cp 5 -12 1
@@ -2931,10 +2931,8 @@ with the density that comes from the slider;
 10 -258113 -1 -1;
 #X obj 68 406 bng 8 250 50 0 \$0-learn-style --- empty 17 7 0 10 -258113
 -1 -1;
-#X obj 80 431 bng 24 250 50 0 \$0-generate-drumz \$0-set-generate-drumz
-new pattern 32 12 1 12 -258699 -66577 -233017;
-#X obj 739 272 vradio 24 1 0 3 lock-instrument empty empty 0 -8 0 10
--66577 -258113 -228856 1;
+#X obj 739 272 vradio 24 1 0 3 lock-instrument --- empty 0 -8 0 10
+-66577 -258113 -228856 0;
 #X obj 737 229 cnv 15 100 25 empty empty LOCK 0 12 0 20 -128992 -228856
 0;
 #X obj 771 273 cnv 15 90 20 empty empty kick 0 12 1 12 -128992 -228856
@@ -2943,3 +2941,5 @@ new pattern 32 12 1 12 -258699 -66577 -233017;
 0;
 #X obj 771 322 cnv 15 90 20 empty empty hi-hat 0 12 1 12 -128992 -228856
 0;
+#X obj 80 431 bng 24 250 50 0 \$0-generate-drumz \$0-set-generate-drumz
+new pattern 32 12 1 12 -258699 -66577 -233017;

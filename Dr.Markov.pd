@@ -1,4 +1,4 @@
-#N canvas 226 416 869 486 10;
+#N canvas 33 23 877 489 10;
 #X declare -path abstractions;
 #N canvas 373 275 552 491 patch 0;
 #X obj 67 146 f \$0;
@@ -250,8 +250,8 @@
 #X connect 112 0 114 0;
 #X connect 113 0 110 0;
 #X restore 372 223 pd midi-control;
-#N canvas 544 176 1376 729 former-STYLE 0;
-#N canvas 491 102 842 688 search 0;
+#N canvas 1 23 1280 729 former-STYLE 0;
+#N canvas 367 23 842 688 search 0;
 #X obj 288 195 cyclone/coll \$0-knowledge;
 #C restore;
 #N canvas 297 275 562 451 element2list 0;
@@ -2138,7 +2138,7 @@ with the density that comes from the slider;
 #X restore 26 464 pd patt2sequencer;
 #N canvas 213 196 1181 599 agnostic-density 0;
 #X obj 48 187 zexy/tabdump kickpattern;
-#X obj 51 342 s kick-string;
+#X obj 55 339 s kick-string;
 #X obj 63 242 zexy/sum;
 #X obj 44 263 +;
 #X obj 296 -139 * 16;
@@ -2225,6 +2225,7 @@ with the density that comes from the slider;
 #X obj 452 241 populate_rhythm;
 #X obj 582 244 populate_rhythm;
 #X obj 713 243 populate_rhythm;
+#X obj 45 364 pdmus/prnt;
 #X connect 0 0 27 0;
 #X connect 2 0 3 1;
 #X connect 3 0 83 0;
@@ -2337,6 +2338,7 @@ with the density that comes from the slider;
 #X connect 81 0 23 0;
 #X connect 82 0 9 0;
 #X connect 83 0 1 0;
+#X connect 83 0 88 0;
 #X connect 84 0 13 0;
 #X connect 85 0 16 0;
 #X connect 86 0 21 0;
@@ -2376,6 +2378,15 @@ with the density that comes from the slider;
 1 12;
 #X obj 379 240 t b b;
 #X obj 278 241 delay 100;
+#X obj 939 260 tabdump;
+#X msg 973 233 set chpattern \, bang;
+#X msg 956 214 set snarepattern \, bang;
+#X msg 939 194 set kickpattern \, bang;
+#X obj 939 281 s lock-pattern;
+#X obj 939 171 sel 0 1 2;
+#X obj 939 42 r \$0-generate-drumz;
+#X obj 939 151 f;
+#X obj 959 73 r lock-instrument;
 #X connect 0 0 51 0;
 #X connect 0 1 2 0;
 #X connect 0 2 52 0;
@@ -2447,6 +2458,16 @@ with the density that comes from the slider;
 #X connect 84 0 54 0;
 #X connect 84 1 83 0;
 #X connect 85 0 84 0;
+#X connect 86 0 90 0;
+#X connect 87 0 86 0;
+#X connect 88 0 86 0;
+#X connect 89 0 86 0;
+#X connect 91 0 89 0;
+#X connect 91 1 88 0;
+#X connect 91 2 87 0;
+#X connect 92 0 93 0;
+#X connect 93 0 91 0;
+#X connect 94 0 93 0;
 #X restore 370 271 pd former-STYLE -subpatch;
 #N canvas 0 128 709 379 midi-unused 0;
 #X obj 49 64 ctlin 29;
@@ -2841,74 +2862,84 @@ with the density that comes from the slider;
 #X connect 13 0 11 0;
 #X connect 15 0 11 0;
 #X connect 18 0 3 0;
-#X restore 817 -2 pd patch;
-#X obj -1 -2 cnv 15 870 480 empty \$0-title MARKOV DRUMS 20 18 0 20
--128992 -258699 0;
-#X obj 304 270 vsl 24 180 -1 1 0 1 param_comm-ui comm COMMONNESS 0
--35 0 20 -66577 -258113 -228856 8950 1;
-#X obj 345 347 bng 24 250 50 0 zero-dws set-zero-dws empty 17 7 0 10
+#X restore 819 2 pd patch;
+#X obj 1 2 cnv 15 870 480 empty \$0-title MARKOV DRUMS 20 18 0 20 -128992
+-258699 0;
+#X obj 236 274 vsl 24 180 -1 1 0 1 param_comm-ui comm COMMONNESS 0
+-35 0 20 -66577 -258113 -228856 17900 1;
+#X obj 267 351 bng 24 250 50 0 zero-dws set-zero-dws empty 17 7 0 10
 -66577 -258113 -258113;
-#X obj 699 270 vsl 24 180 -1 1 0 1 param_ag-cp ag-cp-in Cp 5 -12 1
+#X obj 581 274 vsl 24 180 -1 1 0 1 param_ag-cp ag-cp-in Cp 5 -12 1
 12 -66577 -258113 -228856 8950 1;
-#X obj 656 270 vsl 24 180 -1 1 0 1 param_ag-oh ag-oh-in Oh 5 -12 1
+#X obj 538 274 vsl 24 180 -1 1 0 1 param_ag-oh ag-oh-in Oh 5 -12 1
 12 -66577 -258113 -228856 8950 1;
-#X obj 613 270 vsl 24 180 -1 1 0 1 param_ag-ch ag-ch-in Ch 5 -12 1
+#X obj 495 274 vsl 24 180 -1 1 0 1 param_ag-ch ag-ch-in Ch 5 -12 1
 12 -66577 -258113 -228856 8950 1;
-#X obj 570 270 vsl 24 180 -1 1 0 1 param_ag-snare ag-snare-in S 7 -12
+#X obj 452 274 vsl 24 180 -1 1 0 1 param_ag-snare ag-snare-in S 7 -12
 1 12 -66577 -258113 -228856 8950 1;
-#X obj 527 270 vsl 24 180 -1 1 0 1 param_ag-kick ag-kick-in K 8 -12
+#X obj 409 274 vsl 24 180 -1 1 0 1 param_ag-kick ag-kick-in K 8 -12
 1 12 -66577 -258113 -228856 8950 1;
-#X obj 742 270 vsl 24 180 -1 1 0 1 param_ag-rs ag-rs-in Rs 5 -12 1
+#X obj 624 274 vsl 24 180 -1 1 0 1 param_ag-rs ag-rs-in Rs 5 -12 1
 12 -66577 -258113 -228856 8950 1;
-#X obj 785 347 bng 24 250 50 0 zero-ag set-zero-ag empty 17 7 0 10
+#X obj 657 351 bng 24 250 50 0 zero-ag set-zero-ag empty 17 7 0 10
 -66577 -258113 -258113;
-#X obj 79 179 hradio 24 1 0 32 nos numberz32 empty 0 -8 0 10 -128992
--258113 -1 12;
-#X obj 525 222 cnv 15 100 25 empty empty DENSITY 0 12 0 20 -128992
+#X obj 81 183 hradio 24 1 0 32 nos numberz32 empty 0 -8 0 10 -128992
+-258113 -1 28;
+#X obj 407 227 cnv 15 100 25 empty empty DENSITY 0 12 0 20 -128992
 -228856 0;
-#X obj 19 59 onset32_2 ohihat;
-#X obj 553 445 bng 8 250 50 0 \$0-learn-density-k --- empty 17 7 0
+#X obj 21 63 onset32_2 ohihat;
+#X obj 435 449 bng 8 250 50 0 \$0-learn-density-k --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 596 445 bng 8 250 50 0 \$0-learn-density-s --- empty 17 7 0
+#X obj 478 449 bng 8 250 50 0 \$0-learn-density-s --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 639 445 bng 8 250 50 0 \$0-learn-density-ch --- empty 17 7 0
+#X obj 521 449 bng 8 250 50 0 \$0-learn-density-ch --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 682 445 bng 8 250 50 0 \$0-learn-density-oh --- empty 17 7 0
+#X obj 564 449 bng 8 250 50 0 \$0-learn-density-oh --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 725 445 bng 8 250 50 0 \$0-learn-density-cp --- empty 17 7 0
+#X obj 607 449 bng 8 250 50 0 \$0-learn-density-cp --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 768 445 bng 8 250 50 0 \$0-learn-density-rs --- empty 17 7 0
+#X obj 650 449 bng 8 250 50 0 \$0-learn-density-rs --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 811 363 bng 8 250 50 0 \$0-learn-density-center --- empty 17
+#X obj 683 367 bng 8 250 50 0 \$0-learn-density-center --- empty 17
 7 0 10 -258113 -1 -1;
-#X obj 371 363 bng 8 250 50 0 \$0-learn-commonness-center --- empty
+#X obj 293 367 bng 8 250 50 0 \$0-learn-commonness-center --- empty
 17 7 0 10 -258113 -1 -1;
-#X obj 331 445 bng 8 250 50 0 \$0-learn-commonness --- empty 17 7 0
+#X obj 263 449 bng 8 250 50 0 \$0-learn-commonness --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 19 35 onset32_2 rimshot;
-#X obj 19 83 onset32_2 clap;
-#X obj 19 107 onset32_2 chihat;
-#X obj 19 131 onset32_2 snare;
-#X obj 19 155 onset32_2 kick;
-#X obj 79 220 cnv 15 180 260 empty empty STYLE 18 20 0 20 -128992 -228856
+#X obj 21 39 onset32_2 rimshot;
+#X obj 21 87 onset32_2 clap;
+#X obj 21 111 onset32_2 chihat;
+#X obj 21 135 onset32_2 snare;
+#X obj 21 159 onset32_2 kick;
+#X obj 61 221 cnv 15 100 260 empty empty STYLE 18 20 0 20 -128992 -228856
 0;
-#X obj 129 267 cnv 15 90 20 empty empty motown 0 12 1 12 -128992 -228856
+#X obj 111 271 cnv 15 90 20 empty empty motown 0 12 1 12 -128992 -228856
 0;
-#X obj 129 290 cnv 15 90 20 empty empty jamesBrown 0 12 1 12 -128992
+#X obj 111 294 cnv 15 90 20 empty empty jamesBrown 0 12 1 12 -128992
 -228856 0;
-#X obj 129 315 cnv 15 90 20 empty empty clyde1 0 12 1 12 -128992 -228856
+#X obj 111 319 cnv 15 90 20 empty empty clyde1 0 12 1 12 -128992 -228856
 0;
-#X obj 129 340 cnv 15 90 20 empty empty funkyfresh 0 12 1 12 -128992
+#X obj 111 344 cnv 15 90 20 empty empty funkyfresh 0 12 1 12 -128992
 -228856 0;
-#X obj 128 365 cnv 15 90 20 empty empty daftpunk 0 12 1 12 -128992
+#X obj 110 369 cnv 15 90 20 empty empty daftpunk 0 12 1 12 -128992
 -228856 0;
-#X obj 128 389 cnv 15 90 20 empty empty garageHouse 0 12 1 12 -128992
+#X obj 110 393 cnv 15 90 20 empty empty garageHouse 0 12 1 12 -128992
 -228856 0;
-#X obj 97 266 vradio 24 1 1 6 \$0-stylenumber \$0-set-stylenumber empty
-0 -8 0 10 -66577 -258113 -1 3;
-#X obj 86 442 bng 8 250 50 0 \$0-learn-new-pattern --- empty 17 7 0
+#X obj 79 270 vradio 24 1 1 6 \$0-stylenumber \$0-set-stylenumber empty
+0 -8 0 10 -66577 -258113 -1 5;
+#X obj 68 446 bng 8 250 50 0 \$0-learn-new-pattern --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 86 402 bng 8 250 50 0 \$0-learn-style --- empty 17 7 0 10 -258113
+#X obj 68 406 bng 8 250 50 0 \$0-learn-style --- empty 17 7 0 10 -258113
 -1 -1;
-#X obj 98 427 bng 15 250 50 0 \$0-generate-drumz \$0-set-generate-drumz
-new 17 7 0 10 -262144 -1 -1;
+#X obj 80 431 bng 24 250 50 0 \$0-generate-drumz \$0-set-generate-drumz
+new pattern 32 12 1 12 -258699 -66577 -233017;
+#X obj 739 272 vradio 24 1 0 3 lock-instrument empty empty 0 -8 0 10
+-66577 -258113 -228856 1;
+#X obj 737 229 cnv 15 100 25 empty empty LOCK 0 12 0 20 -128992 -228856
+0;
+#X obj 771 273 cnv 15 90 20 empty empty kick 0 12 1 12 -128992 -228856
+0;
+#X obj 771 297 cnv 15 90 20 empty empty snare 0 12 1 12 -128992 -228856
+0;
+#X obj 771 322 cnv 15 90 20 empty empty hi-hat 0 12 1 12 -128992 -228856
+0;

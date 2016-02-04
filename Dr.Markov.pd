@@ -1,4 +1,4 @@
-#N canvas 607 -553 877 489 10;
+#N canvas 89 84 883 495 10;
 #X declare -path abstractions;
 #N canvas 710 58 534 395 patch 0;
 #X obj 49 126 f \$0;
@@ -23,7 +23,7 @@
 #X msg 12 310 \; \$1-title label_pos 20 18;
 #X msg 30 243 \; \$1-title vis_size 870 480;
 #X text 364 22 angel:;
-#N canvas 11 146 1221 655 midi-control 0;
+#N canvas 16 59 1221 655 midi-control 0;
 #X obj 49 201 makenote;
 #X msg 49 176 \$1 127 100;
 #X msg 10 37 36;
@@ -621,7 +621,7 @@
 #X connect 6 0 2 0;
 #X restore 355 266 pd sound-engine (disabled);
 #X obj 8 12 declare -path abstractions;
-#N canvas 26 46 1280 729 markov-magic 0;
+#N canvas 17 23 1280 709 markov-magic 0;
 #N canvas 367 50 842 688 search 0;
 #X obj 288 195 cyclone/coll \$0-knowledge;
 #C restore;
@@ -2204,9 +2204,9 @@ with the density that comes from the slider;
 #X connect 4 2 5 0;
 #X connect 4 3 3 1;
 #X connect 5 0 3 0;
-#X restore 425 44 pd mouseup;
-#X obj 425 63 s \$0-commonness;
-#X obj 543 62 s \$0-density;
+#X restore 195 24 pd mouseup;
+#X obj 195 43 s \$0-commonness;
+#X obj 313 42 s \$0-density;
 #N canvas 565 559 450 157 mouseup 0;
 #X obj 178 18 inlet;
 #X msg 194 68 stop;
@@ -2222,7 +2222,7 @@ with the density that comes from the slider;
 #X connect 4 2 5 0;
 #X connect 4 3 3 1;
 #X connect 5 0 3 0;
-#X restore 543 43 pd mouseup;
+#X restore 313 23 pd mouseup;
 #N canvas 565 559 450 157 mouseup 0;
 #X obj 178 18 inlet;
 #X msg 194 68 stop;
@@ -2242,7 +2242,7 @@ with the density that comes from the slider;
 #X obj 40 668 s \$0-syncopation;
 #X obj 71 196 tgl 40 0 start-drumz nor start 0 19 0 14 -262144 -1 -1
 0 1;
-#X obj 755 275 nbx 4 18 0 200 0 1 bpm tap-bpm BPM 0 -8 1 20 -262144
+#X obj 315 295 nbx 4 18 0 200 0 1 bpm tap-bpm BPM 0 -8 1 20 -262144
 -1 -1 121.399 256;
 #N canvas 340 232 785 500 tap 0;
 #X obj 244 55 timer;
@@ -2308,18 +2308,11 @@ with the density that comes from the slider;
 -262144;
 #X obj 15 264 s tap-bpm;
 #X obj 60 139 r st;
-#X obj 687 194 r cng;
-#X obj 302 14 r prv;
-#X obj 342 14 r nxt;
-#X obj 303 56 +;
-#X obj 343 56 f;
-#X msg 303 34 1;
-#X msg 342 34 -1;
-#X obj 687 218 s \$0-generate-drumz;
-#X obj 687 237 r bp;
-#X obj 687 258 int;
+#X obj 247 214 r cng;
+#X obj 247 238 s \$0-generate-drumz;
+#X obj 247 257 r bp;
+#X obj 247 278 int;
 #X obj 28 139 r tp;
-#X obj 303 76 % 6;
 #X obj 21 65 hsl 128 15 0 1 0 1 vol-ui nor volume 33 8 1 12 -1 -262144
 -262144 7300 1;
 #X obj 95 106 s \$0-volume;
@@ -2353,20 +2346,20 @@ with the density that comes from the slider;
 #X connect 9 0 1 0;
 #X connect 10 0 1 0;
 #X connect 11 0 1 0;
-#X restore 554 147 pd load a style to the cyclone/coll;
-#X obj 527 127 t b f;
-#X obj 26 350 r \$0-generate-drumz;
-#X obj 525 108 r \$0-stylenumber;
+#X restore 324 127 pd load a style to the cyclone/coll;
+#X obj 297 107 t b f;
+#X obj 26 370 r \$0-generate-drumz;
+#X obj 295 88 r \$0-stylenumber;
 #X msg 242 553 kick \$1;
 #X msg 340 550 snare \$1;
 #X msg 453 551 ch \$1;
 #X msg 532 552 oh \$1;
 #X msg 627 557 cp \$1;
 #X msg 726 557 rs \$1;
-#X obj 425 25 r param_comm-ui;
-#X obj 664 457 hradio 18 1 1 8 \$0-order nor empty 0 -8 0 10 -262144
+#X obj 195 5 r param_comm-ui;
+#X obj 611 458 hradio 18 1 1 8 \$0-order nor empty 0 -8 0 10 -262144
 -1 -1 2;
-#X obj 543 24 r param_den-ui;
+#X obj 313 4 r param_den-ui;
 #X obj 40 629 r param_sync-ui;
 #X obj 96 85 r vol-ui;
 #X obj 241 522 r param_ag-kick;
@@ -2715,48 +2708,46 @@ with the density that comes from the slider;
 #X connect 86 0 21 0;
 #X connect 87 0 25 0;
 #X restore 131 578 pd agnostic-density;
-#X msg 320 340 label \$1;
-#X msg 320 302 new pattern;
-#X obj 320 321 zexy/list2symbol;
-#X obj 359 185 loadbang;
-#X msg 821 193 bang;
-#X msg 1205 431 41 1;
-#X obj 1099 431 pdmus/midi-learn;
-#X obj 1072 410 t b f;
-#X obj 1072 589 s \$0-save-state;
-#X obj 1099 495 int;
-#X obj 1099 517 - 1;
-#X obj 1099 475 + 0.5;
-#X msg 996 449 41 1;
-#X obj 890 449 pdmus/midi-learn;
-#X obj 890 470 / 64;
-#X obj 890 490 int;
-#X obj 890 510 change;
-#X obj 863 428 t b f;
-#X obj 863 580 s \$0-save-state;
-#X obj 1099 451 maxlib/scale 0 127 6.5 0;
-#X obj 1072 389 r \$0-learn-style;
-#X obj 1099 565 s \$0-set-stylenumber;
-#X obj 1099 539 change;
-#X obj 863 406 r \$0-learn-new-pattern;
-#X text 662 437 ORDER AMIGUITO!!;
-#X obj 890 531 sel 1;
-#X obj 890 555 s \$0-set-generate-drumz;
-#X obj 527 170 s \$0-set-generate-drumz;
-#X obj 429 402 s \$0-set-generate-drumz;
-#X msg 441 318 color 13 2 10 \, size 24 \, label_pos 32 12 \, label_font
+#X msg 203 450 label \$1;
+#X msg 203 412 new pattern;
+#X obj 203 431 zexy/list2symbol;
+#X obj 203 345 loadbang;
+#X msg 381 213 bang;
+#X msg 1185 431 41 1;
+#X obj 1079 431 pdmus/midi-learn;
+#X obj 1052 410 t b f;
+#X obj 1052 589 s \$0-save-state;
+#X obj 1079 495 int;
+#X obj 1079 517 - 1;
+#X obj 1079 475 + 0.5;
+#X msg 976 449 41 1;
+#X obj 870 449 pdmus/midi-learn;
+#X obj 870 470 / 64;
+#X obj 870 490 int;
+#X obj 870 510 change;
+#X obj 843 428 t b f;
+#X obj 843 580 s \$0-save-state;
+#X obj 1079 451 maxlib/scale 0 127 6.5 0;
+#X obj 1052 389 r \$0-learn-style;
+#X obj 1079 565 s \$0-set-stylenumber;
+#X obj 1079 539 change;
+#X obj 843 406 r \$0-learn-new-pattern;
+#X text 609 438 ORDER AMIGUITO!!;
+#X obj 870 531 sel 1;
+#X obj 870 555 s \$0-set-generate-drumz;
+#X obj 297 150 s \$0-set-generate-drumz;
+#X obj 203 482 s \$0-set-generate-drumz;
+#X msg 230 391 color 13 2 10 \, size 24 \, label_pos 32 12 \, label_font
 1 12;
-#X obj 379 240 t b b;
-#X obj 359 207 delay 100;
-#X obj 887 253 tabdump;
-#X msg 921 226 set chpattern \, bang;
-#X msg 904 207 set snarepattern \, bang;
-#X msg 887 187 set kickpattern \, bang;
-#X obj 887 274 s lock-pattern;
-#X obj 887 164 sel 0 1 2;
-#X obj 887 35 r \$0-generate-drumz;
-#X obj 907 66 r lock-instrument;
-#X obj 887 144 f 0;
+#X obj 203 370 t b b;
+#X obj 941 290 tabdump;
+#X msg 972 243 set chpattern \, bang;
+#X msg 956 224 set snarepattern \, bang;
+#X msg 941 204 set kickpattern \, bang;
+#X obj 941 311 s lock-pattern;
+#X obj 941 92 r \$0-generate-drumz;
+#X obj 953 137 r lock-instrument;
+#X obj 941 161 f 0;
 #N canvas 546 103 613 300 load 0;
 #X obj 198 184 symbol;
 #X msg 406 146 hiphop;
@@ -2795,24 +2786,27 @@ with the density that comes from the slider;
 #X connect 13 0 0 0;
 #X connect 14 0 0 0;
 #X connect 15 0 0 0;
-#X restore 1103 220 pd load a style to the cyclone/coll;
-#X obj 1076 173 t b f;
-#X obj 1076 153 r \$0-stylenumber;
-#X obj 1074 97 hradio 18 1 1 8 \$0-order nor empty 0 -8 0 10 -262144
--1 -1 1;
-#X obj 1076 239 s \$0-set-generate-drumz;
-#X text 1114 77 ORDER;
-#X obj 1178 153 r \$0-order;
-#X obj 1103 201 f;
-#X obj 1178 173 t b f;
-#X obj 1074 26 r order-letter;
-#X obj 1074 50 + 1;
-#X text 1128 60 **************;
-#X text 1075 130 *********************************;
-#X obj 832 98 delay 200;
-#X connect 0 0 51 0;
+#X restore 613 220 pd load a style to the cyclone/coll;
+#X obj 586 173 t b f;
+#X obj 586 153 r \$0-stylenumber;
+#X obj 584 97 hradio 18 1 1 8 \$0-order nor empty 0 -8 0 10 -262144
+-1 -1 3;
+#X obj 586 239 s \$0-set-generate-drumz;
+#X text 624 77 ORDER;
+#X obj 688 153 r \$0-order;
+#X obj 613 201 f;
+#X obj 688 173 t b f;
+#X obj 584 26 r order-letter;
+#X obj 584 50 + 1;
+#X text 638 60 **************;
+#X text 585 130 *********************************;
+#X text 928 50 to house harmonic filler!;
+#X obj 941 114 delay 100;
+#X obj 941 181 sel 0 1 2 3;
+#X msg 988 263 set ohpattern \, bang;
+#X connect 0 0 44 0;
 #X connect 0 1 2 0;
-#X connect 0 2 52 0;
+#X connect 0 2 45 0;
 #X connect 2 0 1 0;
 #X connect 4 0 5 0;
 #X connect 7 0 6 0;
@@ -2820,87 +2814,81 @@ with the density that comes from the slider;
 #X connect 12 0 14 0;
 #X connect 13 0 12 0;
 #X connect 15 0 10 0;
-#X connect 16 0 23 0;
-#X connect 17 0 21 0;
-#X connect 18 0 22 0;
-#X connect 19 0 20 0;
-#X connect 19 0 27 0;
-#X connect 20 0 19 1;
-#X connect 21 0 19 0;
-#X connect 22 0 19 0;
-#X connect 24 0 25 0;
-#X connect 25 0 11 0;
-#X connect 26 0 13 0;
-#X connect 31 0 80 0;
-#X connect 31 1 30 0;
-#X connect 32 0 0 0;
-#X connect 33 0 31 0;
-#X connect 34 0 52 1;
-#X connect 35 0 52 1;
-#X connect 36 0 52 1;
-#X connect 37 0 52 1;
-#X connect 38 0 52 1;
-#X connect 39 0 52 1;
-#X connect 40 0 4 0;
-#X connect 42 0 7 0;
-#X connect 43 0 8 0;
-#X connect 44 0 29 0;
-#X connect 45 0 34 0;
-#X connect 46 0 35 0;
-#X connect 47 0 36 0;
-#X connect 48 0 37 0;
-#X connect 49 0 38 0;
-#X connect 50 0 39 0;
-#X connect 53 0 81 0;
-#X connect 54 0 55 0;
-#X connect 55 0 53 0;
-#X connect 56 0 84 0;
-#X connect 57 0 23 0;
+#X connect 16 0 17 0;
+#X connect 18 0 19 0;
+#X connect 19 0 11 0;
+#X connect 20 0 13 0;
+#X connect 24 0 73 0;
+#X connect 24 1 23 0;
+#X connect 25 0 0 0;
+#X connect 26 0 24 0;
+#X connect 27 0 45 1;
+#X connect 28 0 45 1;
+#X connect 29 0 45 1;
+#X connect 30 0 45 1;
+#X connect 31 0 45 1;
+#X connect 32 0 45 1;
+#X connect 33 0 4 0;
+#X connect 35 0 7 0;
+#X connect 36 0 8 0;
+#X connect 37 0 22 0;
+#X connect 38 0 27 0;
+#X connect 39 0 28 0;
+#X connect 40 0 29 0;
+#X connect 41 0 30 0;
+#X connect 42 0 31 0;
+#X connect 43 0 32 0;
+#X connect 46 0 74 0;
+#X connect 47 0 48 0;
+#X connect 48 0 46 0;
+#X connect 49 0 76 0;
+#X connect 50 0 17 0;
+#X connect 51 0 52 1;
+#X connect 52 0 65 0;
+#X connect 52 1 51 0;
+#X connect 53 0 54 0;
+#X connect 53 1 52 0;
+#X connect 55 0 56 0;
+#X connect 56 0 68 0;
+#X connect 57 0 55 0;
 #X connect 58 0 59 1;
-#X connect 59 0 72 0;
+#X connect 59 0 60 0;
 #X connect 59 1 58 0;
 #X connect 60 0 61 0;
-#X connect 60 1 59 0;
-#X connect 62 0 63 0;
-#X connect 63 0 75 0;
-#X connect 64 0 62 0;
-#X connect 65 0 66 1;
-#X connect 66 0 67 0;
-#X connect 66 1 65 0;
-#X connect 67 0 68 0;
-#X connect 68 0 69 0;
-#X connect 69 0 78 0;
-#X connect 70 0 71 0;
-#X connect 70 1 66 0;
-#X connect 72 0 64 0;
-#X connect 73 0 60 0;
+#X connect 61 0 62 0;
+#X connect 62 0 71 0;
+#X connect 63 0 64 0;
+#X connect 63 1 59 0;
+#X connect 65 0 57 0;
+#X connect 66 0 53 0;
+#X connect 68 0 67 0;
+#X connect 69 0 63 0;
+#X connect 71 0 72 0;
 #X connect 75 0 74 0;
-#X connect 76 0 70 0;
-#X connect 78 0 79 0;
-#X connect 82 0 81 0;
-#X connect 83 0 54 0;
-#X connect 83 1 82 0;
-#X connect 84 0 83 0;
-#X connect 85 0 89 0;
-#X connect 86 0 85 0;
-#X connect 87 0 85 0;
-#X connect 88 0 85 0;
-#X connect 90 0 88 0;
-#X connect 90 1 87 0;
-#X connect 90 2 86 0;
-#X connect 91 0 107 0;
-#X connect 92 0 93 0;
-#X connect 93 0 90 0;
-#X connect 95 0 98 0;
-#X connect 95 1 101 0;
-#X connect 96 0 95 0;
-#X connect 100 0 102 0;
-#X connect 101 0 94 0;
-#X connect 102 0 101 0;
-#X connect 102 1 94 1;
-#X connect 103 0 104 0;
-#X connect 104 0 97 0;
-#X connect 107 0 93 0;
+#X connect 76 0 47 0;
+#X connect 76 1 75 0;
+#X connect 77 0 81 0;
+#X connect 78 0 77 0;
+#X connect 79 0 77 0;
+#X connect 80 0 77 0;
+#X connect 82 0 99 0;
+#X connect 83 0 84 0;
+#X connect 84 0 100 0;
+#X connect 86 0 89 0;
+#X connect 86 1 92 0;
+#X connect 87 0 86 0;
+#X connect 91 0 93 0;
+#X connect 92 0 85 0;
+#X connect 93 0 92 0;
+#X connect 93 1 85 1;
+#X connect 94 0 95 0;
+#X connect 95 0 88 0;
+#X connect 99 0 84 0;
+#X connect 100 0 80 0;
+#X connect 100 1 79 0;
+#X connect 100 2 78 0;
+#X connect 100 3 101 0;
+#X connect 101 0 77 0;
 #X restore 353 245 pd markov-magic;
 #X connect 0 0 1 0;
 #X connect 1 0 4 0;
@@ -2927,89 +2915,89 @@ with the density that comes from the slider;
 #X restore 819 2 pd patch;
 #X obj 1 2 cnv 15 870 480 empty \$0-title MARKOV DRUMS 20 18 0 20 -128992
 -258699 0;
-#X obj 236 274 vsl 24 180 -1 1 0 1 param_comm-ui comm COMMONNESS 0
--35 0 20 -66577 -258113 -228856 8950 1;
-#X obj 267 351 bng 24 250 50 0 zero-dws set-zero-dws empty 17 7 0 10
+#X obj 367 274 vsl 24 180 -1 1 0 1 param_comm-ui comm COMMONNESS 0
+-34 0 20 -66577 -258113 -228856 14500 1;
+#X obj 408 351 bng 24 250 50 0 zero-dws set-zero-dws empty 17 7 0 10
 -66577 -258113 -258113;
-#X obj 581 274 vsl 24 180 -1 1 0 1 param_ag-cp ag-cp-in Cp 5 -12 1
+#X obj 712 274 vsl 24 180 -1 1 0 1 param_ag-cp ag-cp-in Cp 5 -12 1
 12 -66577 -258113 -228856 8950 1;
-#X obj 538 274 vsl 24 180 -1 1 0 1 param_ag-oh ag-oh-in Oh 5 -12 1
+#X obj 669 274 vsl 24 180 -1 1 0 1 param_ag-oh ag-oh-in Oh 5 -12 1
 12 -66577 -258113 -228856 8950 1;
-#X obj 495 274 vsl 24 180 -1 1 0 1 param_ag-ch ag-ch-in Ch 5 -12 1
+#X obj 626 274 vsl 24 180 -1 1 0 1 param_ag-ch ag-ch-in Ch 5 -12 1
 12 -66577 -258113 -228856 8950 1;
-#X obj 452 274 vsl 24 180 -1 1 0 1 param_ag-snare ag-snare-in S 7 -12
+#X obj 583 274 vsl 24 180 -1 1 0 1 param_ag-snare ag-snare-in S 7 -12
 1 12 -66577 -258113 -228856 8950 1;
-#X obj 409 274 vsl 24 180 -1 1 0 1 param_ag-kick ag-kick-in K 8 -12
+#X obj 540 274 vsl 24 180 -1 1 0 1 param_ag-kick ag-kick-in K 8 -12
 1 12 -66577 -258113 -228856 8950 1;
-#X obj 624 274 vsl 24 180 -1 1 0 1 param_ag-rs ag-rs-in Rs 5 -12 1
+#X obj 755 274 vsl 24 180 -1 1 0 1 param_ag-rs ag-rs-in Rs 5 -12 1
 12 -66577 -258113 -228856 8950 1;
-#X obj 657 351 bng 24 250 50 0 zero-ag set-zero-ag empty 17 7 0 10
+#X obj 798 351 bng 24 250 50 0 zero-ag set-zero-ag empty 17 7 0 10
 -66577 -258113 -258113;
 #X obj 81 183 hradio 24 1 0 32 nos numberz32 empty 0 -8 0 10 -128992
--258113 -1 4;
-#X obj 407 227 cnv 15 100 25 empty empty DENSITY 0 12 0 20 -128992
+-258113 -1 8;
+#X obj 538 227 cnv 15 100 25 empty empty DENSITY 0 12 0 20 -128992
 -228856 0;
 #X obj 21 63 onset32_2 ohihat;
-#X obj 435 449 bng 8 250 50 0 \$0-learn-density-k --- empty 17 7 0
+#X obj 530 449 bng 8 250 50 0 \$0-learn-density-k --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 478 449 bng 8 250 50 0 \$0-learn-density-s --- empty 17 7 0
+#X obj 573 449 bng 8 250 50 0 \$0-learn-density-s --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 521 449 bng 8 250 50 0 \$0-learn-density-ch --- empty 17 7 0
+#X obj 616 449 bng 8 250 50 0 \$0-learn-density-ch --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 564 449 bng 8 250 50 0 \$0-learn-density-oh --- empty 17 7 0
+#X obj 659 449 bng 8 250 50 0 \$0-learn-density-oh --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 607 449 bng 8 250 50 0 \$0-learn-density-cp --- empty 17 7 0
+#X obj 702 449 bng 8 250 50 0 \$0-learn-density-cp --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 650 449 bng 8 250 50 0 \$0-learn-density-rs --- empty 17 7 0
+#X obj 745 449 bng 8 250 50 0 \$0-learn-density-rs --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 683 367 bng 8 250 50 0 \$0-learn-density-center --- empty 17
+#X obj 788 367 bng 8 250 50 0 \$0-learn-density-center --- empty 17
 7 0 10 -258113 -1 -1;
-#X obj 293 367 bng 8 250 50 0 \$0-learn-commonness-center --- empty
+#X obj 398 367 bng 8 250 50 0 \$0-learn-commonness-center --- empty
 17 7 0 10 -258113 -1 -1;
-#X obj 263 449 bng 8 250 50 0 \$0-learn-commonness --- empty 17 7 0
+#X obj 357 449 bng 8 250 50 0 \$0-learn-commonness --- empty 17 7 0
 10 -258113 -1 -1;
 #X obj 21 39 onset32_2 rimshot;
 #X obj 21 87 onset32_2 clap;
 #X obj 21 111 onset32_2 chihat;
 #X obj 21 135 onset32_2 snare;
 #X obj 21 159 onset32_2 kick;
-#X obj 61 221 cnv 15 100 260 empty empty STYLE 18 20 0 20 -128992 -228856
+#X obj 181 221 cnv 15 100 260 empty empty STYLE 18 20 0 20 -128992
+-228856 0;
+#X obj 232 271 cnv 15 90 20 empty empty motown 0 12 1 12 -128992 -228856
 0;
-#X obj 111 271 cnv 15 90 20 empty empty motown 0 12 1 12 -128992 -228856
+#X obj 232 294 cnv 15 90 20 empty empty jamesBrown 0 12 1 12 -128992
+-228856 0;
+#X obj 232 319 cnv 15 90 20 empty empty clyde1 0 12 1 12 -128992 -228856
 0;
-#X obj 111 294 cnv 15 90 20 empty empty jamesBrown 0 12 1 12 -128992
+#X obj 232 344 cnv 15 90 20 empty empty funkyfresh 0 12 1 12 -128992
 -228856 0;
-#X obj 111 319 cnv 15 90 20 empty empty clyde1 0 12 1 12 -128992 -228856
-0;
-#X obj 111 344 cnv 15 90 20 empty empty funkyfresh 0 12 1 12 -128992
+#X obj 231 369 cnv 15 90 20 empty empty daftpunk 0 12 1 12 -128992
 -228856 0;
-#X obj 110 369 cnv 15 90 20 empty empty daftpunk 0 12 1 12 -128992
+#X obj 231 393 cnv 15 90 20 empty empty garageHouse 0 12 1 12 -128992
 -228856 0;
-#X obj 110 393 cnv 15 90 20 empty empty garageHouse 0 12 1 12 -128992
--228856 0;
-#X obj 79 270 vradio 24 1 1 6 \$0-stylenumber \$0-set-stylenumber empty
-0 -8 0 10 -66577 -258113 -1 5;
-#X obj 68 446 bng 8 250 50 0 \$0-learn-new-pattern --- empty 17 7 0
+#X obj 200 270 vradio 24 1 1 6 \$0-stylenumber \$0-set-stylenumber
+empty 0 -8 0 10 -66577 -258113 -1 3;
+#X obj 189 449 bng 8 250 50 0 \$0-learn-new-pattern --- empty 17 7
+0 10 -258113 -1 -1;
+#X obj 189 406 bng 8 250 50 0 \$0-learn-style --- empty 17 7 0 10 -258113
+-1 -1;
+#X obj 200 458 s \$0-generate-drumz;
+#X obj 200 433 bng 24 250 50 0 empty empty new pattern 32 12 1 12 -258699
+-66577 -233017;
+#X obj 93 274 vradio 24 1 0 3 order-letter nor MODE 0 -34 0 20 -66577
+-258113 -228856 2;
+#X obj 83 338 bng 8 250 50 0 \$0-learn-new-pattern --- empty 17 7 0
 10 -258113 -1 -1;
-#X obj 68 406 bng 8 250 50 0 \$0-learn-style --- empty 17 7 0 10 -258113
--1 -1;
-#X obj 739 272 vradio 24 1 0 3 lock-instrument --- empty 0 -8 0 10
--66577 -258113 -228856 0;
-#X obj 737 229 cnv 15 100 25 empty empty LOCK 0 12 0 20 -128992 -228856
+#X obj 199 415 r \$0-set-generate-drumz;
+#X obj 196 458 cnv 15 150 17 empty empty empty 20 12 0 14 -128992 -66577
 0;
-#X obj 771 273 cnv 15 90 20 empty empty kick 0 12 1 12 -128992 -228856
+#X obj 196 415 cnv 15 150 17 empty empty empty 20 12 0 14 -128992 -66577
 0;
-#X obj 771 297 cnv 15 90 20 empty empty snare 0 12 1 12 -128992 -228856
+#X obj 122 276 cnv 15 20 20 empty empty A 0 12 1 12 -128992 -228856
 0;
-#X obj 771 322 cnv 15 90 20 empty empty hi-hat 0 12 1 12 -128992 -228856
+#X obj 122 300 cnv 15 20 20 empty empty B 0 12 1 12 -128992 -228856
 0;
-#X obj 739 432 hradio 24 1 1 3 order-letter nor empty 0 -8 0 10 -66577
--258113 -228856 0;
-#X obj 720 386 cnv 15 50 20 empty empty MODE 18 20 0 20 -128992 -228856
+#X obj 122 326 cnv 15 20 20 empty empty C 0 12 1 12 -128992 -228856
 0;
-#X obj 813 448 bng 8 250 50 0 \$0-learn-mode --- empty 17 7 0 10 -258113
--1 -1;
-#X obj 729 336 bng 8 250 50 0 \$0-learn-lock --- empty 17 7 0 10 -258113
--1 -1;
-#X obj 80 431 bng 24 250 50 0 \$0-generate-drumz \$0-set-generate-drumz
-new pattern 32 12 1 12 -258699 -66577 -233017;
+#X connect 39 0 38 0;
+#X connect 42 0 39 0;

@@ -1,6 +1,6 @@
-#N canvas -107 -603 883 495 10;
+#N canvas 287 113 883 495 10;
 #X declare -path abstractions;
-#N canvas 710 58 534 395 patch 0;
+#N canvas 674 186 534 395 patch 1;
 #X obj 49 126 f \$0;
 #X obj 49 146 list;
 #X obj 49 107 t b a;
@@ -40,7 +40,7 @@
 #X msg 205 121 40;
 #X msg 205 144 41;
 #X msg 226 36 42;
-#X msg 284 37 46, f 5;
+#X msg 284 37 46;
 #X obj 49 225 noteout 10;
 #X text 119 228 I changed to channel 10!;
 #X msg 152 522 50 1;
@@ -261,7 +261,7 @@
 #X obj 198 148 pack;
 #X obj 198 167 route 107;
 #X obj 190 223 sel 127;
-#X obj 213 276 s st, f 6;
+#X obj 213 276 s st;
 #X obj 198 189 change;
 #X obj 347 120 notein 1;
 #X obj 347 141 pack;
@@ -621,7 +621,7 @@
 #X connect 6 0 2 0;
 #X restore 355 266 pd sound-engine (disabled);
 #X obj 8 12 declare -path abstractions;
-#N canvas 17 23 1280 709 markov-magic 0;
+#N canvas 14 69 1280 699 markov-magic 0;
 #N canvas 367 50 842 688 search 0;
 #X obj 288 195 cyclone/coll \$0-knowledge;
 #C restore;
@@ -2396,11 +2396,11 @@ with the density that comes from the slider;
 #X obj 214 165 spigot;
 #X msg 244 239 0;
 #X msg 271 239 1;
-#X floatatom 281 160 5 0 0 0 - - -, f 5;
+#X floatatom 281 160 5 0 0 0 - - -;
 #X obj 244 133 t f f f;
 #X obj 244 193 sel 0;
 #X obj 244 213 t b b;
-#X floatatom 282 74 5 0 0 0 - - -, f 5;
+#X floatatom 282 74 5 0 0 0 - - -;
 #X obj 157 44 t f b f;
 #X obj 197 114 f;
 #X connect 0 0 17 0;
@@ -2757,7 +2757,7 @@ with the density that comes from the slider;
 #X obj 105 43 inlet style number;
 #X obj 492 170 inlet order number;
 #X obj 198 210 pack s f;
-#X floatatom 492 194 5 0 0 0 - - -, f 5;
+#X floatatom 492 194 5 0 0 0 - - -;
 #X obj 409 262 print;
 #X msg 198 241 read drumstyles/\$1_\$2;
 #X msg 20 147 motown;
@@ -2789,10 +2789,10 @@ with the density that comes from the slider;
 #X restore 613 220 pd load a style to the cyclone/coll;
 #X obj 586 173 t b f;
 #X obj 586 153 r \$0-stylenumber;
-#X obj 584 97 hradio 18 1 1 8 \$0-order nor empty 0 -8 0 10 -262144
--1 -1 2;
+#X obj 611 93 hradio 18 1 1 8 \$0-order nor empty 0 -8 0 10 -262144
+-1 -1 1;
 #X obj 586 239 s \$0-set-generate-drumz;
-#X text 624 77 ORDER;
+#X text 651 73 ORDER;
 #X obj 688 153 r \$0-order;
 #X obj 613 201 f;
 #X obj 688 173 t b f;
@@ -2804,6 +2804,8 @@ with the density that comes from the slider;
 #X obj 941 114 delay 100;
 #X obj 941 181 sel 0 1 2 3;
 #X msg 988 263 set ohpattern \, bang;
+#X obj 584 71 t b f;
+#X obj 584 114 s \$0-generate-drumz;
 #X connect 0 0 44 0;
 #X connect 0 1 2 0;
 #X connect 0 2 45 0;
@@ -2882,13 +2884,15 @@ with the density that comes from the slider;
 #X connect 93 0 92 0;
 #X connect 93 1 85 1;
 #X connect 94 0 95 0;
-#X connect 95 0 88 0;
+#X connect 95 0 102 0;
 #X connect 99 0 84 0;
 #X connect 100 0 80 0;
 #X connect 100 1 79 0;
 #X connect 100 2 78 0;
 #X connect 100 3 101 0;
 #X connect 101 0 77 0;
+#X connect 102 0 103 0;
+#X connect 102 1 88 0;
 #X restore 353 245 pd markov-magic;
 #X connect 0 0 1 0;
 #X connect 1 0 4 0;
@@ -2934,7 +2938,7 @@ with the density that comes from the slider;
 #X obj 798 351 bng 24 250 50 0 zero-ag set-zero-ag empty 17 7 0 10
 -66577 -258113 -258113;
 #X obj 81 183 hradio 24 1 0 32 nos numberz32 empty 0 -8 0 10 -128992
--258113 -1 8;
+-258113 -1 0;
 #X obj 538 227 cnv 15 100 25 empty empty DENSITY 0 12 0 20 -128992
 -228856 0;
 #X obj 21 63 onset32_2 ohihat;
@@ -2985,7 +2989,7 @@ empty 0 -8 0 10 -66577 -258113 -1 5;
 #X obj 200 433 bng 24 250 50 0 empty empty new pattern 32 12 1 12 -258699
 -66577 -233017;
 #X obj 93 274 vradio 24 1 0 3 order-letter nor MODE 0 -34 0 20 -66577
--258113 -228856 1;
+-258113 -228856 0;
 #X obj 83 338 bng 8 250 50 0 \$0-learn-new-pattern --- empty 17 7 0
 10 -258113 -1 -1;
 #X obj 199 415 r \$0-set-generate-drumz;
